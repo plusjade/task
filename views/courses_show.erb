@@ -1,0 +1,126 @@
+<div style="position:relative">
+  
+  <div id="document-wrapper">
+    <div class="inner">
+      Document Viewer
+    </div>
+  </div>
+
+  <div id="extractor-wrapper">
+    <ul id="extractor-tabs" class="nav nav-tabs">
+      <li><a href="#identification">Course ID</a></li>
+      <li><a href="#assignments">Assignments</a></li>
+      <li><a href="#extra">Extra</a></li>
+      <li class="pull-right">
+       <button type="submit" class="btn btn-success">Save</button>
+       <button type="submit" class="btn btn-primary">Finish</button>
+      </li>
+    </ul>
+
+    <form class="tab-content inner" action="#" method="POST">
+
+      <div class="tab-pane" id="identification">
+        <h3>Course Identifiers</h3>
+        <label>University name</label>
+        <input type="text" class="span3" placeholder="Type something…">
+
+        <label>Course name</label>
+        <input type="text" class="span3" placeholder="Type something…">
+      
+        <label>Term</label>
+        <input type="text" class="span3" placeholder="Type something…">
+      </div>
+  
+      <div class="tab-pane" id="assignments">
+        
+        <div class="well" style="border:2px solid #FFF; isplay:none">
+          <p class="form-inline">
+            <label>Name</label>
+            <br>
+            <input type="text" class="span3" placeholder="Assignment name"> &#160;
+            <select>
+              <option>[ choose type ]</option>
+              <option>blah</option>
+              <option>blah</option>
+              <option>blah</option>
+            </select>
+          </p>
+
+          <label>Topic (optional)</label>
+          <input type="text" class="span6" placeholder="Topic">
+          
+          
+          <label>Description</label>
+          <textarea class="span6"></textarea>
+
+          
+          <label>Due Date</label>
+          <input type="text" class="span1" placeholder="DD">
+          <input type="text" class="span1" placeholder="MM">
+          <input type="text" class="span1" placeholder="YYY">
+
+
+          <label>Severity</label>
+          <p class="form-inline">
+            <label for="critical">
+              <input type="radio" name="severity" value="critical" id="critical"> Critical
+            </label> 
+            <label for="normal">
+              <input type="radio" name="severity" value="normal" id="normal"> Normal
+            </label> 
+            <label for="optional">
+              <input type="radio" name="severity" value="optional" id="optional"> Optional
+            </label>
+          </p>
+      
+          <label class="checkbox">
+              <input type="checkbox"> Is Deliverable?
+          </label>
+          
+          <br>
+          <p>
+            <button class="btn">Updating Existing</button>
+            <button class="btn btn-success pull-right">Add as New</button>
+          </p>
+        </div>
+        
+        <div id="assignments-wrapper">
+          <table class="table table-striped">
+            <thead style="display:none">
+              <tr>
+                <th>New</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            <% 20.times do %>
+              <tr>
+                <td>read intro to math</td>
+                <td>reading</td>
+                <td style="text-align:right">18 July, 2012</td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="extra">
+        <h3>Course Meta-data</h3>
+        <label>Meeting Schedule</label>
+        <input type="text" class="span3" placeholder="(Date Picker)">
+    
+        <label>Office Hours</label>
+        <textarea class="span6"></textarea>
+    
+        <label>Textbook Information</label>
+        <textarea class="span6"></textarea>
+    
+        <label>Footnotes</label>
+        <textarea class="span6"></textarea>
+      </div>
+      
+    </form>
+  </div>
+  
+</div>

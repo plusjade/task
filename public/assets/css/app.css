@@ -1,0 +1,40 @@
+#extractor-wrapper{
+  width:45%;
+  position: absolute;
+  left:10px;
+  min-width:400px;
+  background:#eee;
+}
+#document-wrapper {
+  width: 50%;
+  position: absolute;
+  right: 10px;
+  min-width: 500px;
+  border: 1px solid #ccc;
+  background:#DDD;
+  border-radius:5px;
+  min-height:600px;
+}
+
+.inner {
+  padding:10px;
+}
+form.inner {
+  ackground: #FFF;
+}
+
+ul.nav {
+  margin:0;
+}
+
+textarea {
+  width:99%;
+  min-height:80px;
+}
+#assignments-wrapper {
+  height:200px; 
+  padding:0 10px;
+  overflow:auto;
+  border:1px solid #aaa; 
+  border-radius:5px
+}
