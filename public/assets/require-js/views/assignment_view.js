@@ -6,7 +6,7 @@ define([
 ], function($, _, Backbone, Mustache){
   
    return Backbone.View.extend({
-    tagName : "tr",
+    //tagName : "tr",
     template : $("#assignment_template").html(),
    
     events : {
@@ -14,9 +14,10 @@ define([
     },
       
     render : function(){
-      return $(this.el).html(
-        Mustache.render(this.template, this.model.attributes)
-      )
+      //return $(this.el).html(
+      //  Mustache.render(this.template, this.model.attributes)
+      //)
+      return Mustache.render(this.template, this.model.attributes)
     },
   
     clickTag : function(e){

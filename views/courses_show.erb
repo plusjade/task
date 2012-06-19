@@ -8,9 +8,8 @@
 
   <div id="extractor-wrapper">
     <ul id="extractor-tabs" class="nav nav-tabs">
-      <li><a href="#identification">Course ID</a></li>
+      <li><a href="#identification">Course Info</a></li>
       <li><a href="#assignments">Assignments</a></li>
-      <li><a href="#extra">Extra</a></li>
       <li class="pull-right">
        <button type="submit" class="btn btn-success">Save</button>
        <button type="submit" class="btn btn-primary">Finish</button>
@@ -20,20 +19,52 @@
     <form class="tab-content inner" action="#" method="POST">
 
       <div class="tab-pane" id="identification">
-        <h3>Course Identifiers</h3>
         <label>University name</label>
-        <input type="text" class="span3" placeholder="Type something…">
+        <select>
+        <% TestData::Universities.sort.each do |name| %>
+          <option><%= name %></option>
+        <% end %>  
+        </select> {{ university }}
 
-        <label>Course name</label>
-        <input type="text" class="span3" placeholder="Type something…">
-      
         <label>Term</label>
-        <input type="text" class="span3" placeholder="Type something…">
+        Select <em>"Spring"</em> for semester schedules beginning in January.
+        <br>
+        <select>
+        <% TestData::Terms.each do |name| %>
+          <option><%= name %></option>
+        <% end %>
+        </select> {{ term }}
+        
+        <label>Course name</label>
+        <input type="text" class="span3" value="{{ name }}" placeholder="Type something…">
+        
+        <hr>
+        
+        <ul id="course_extra" class="nav nav-pills" style="margin-bottom:10px">
+          <li><a href="#office_hours">Office Hours</a></li>
+          <li><a href="#textbook_information">Textbook Information</a></li>
+          <li><a href="#footnotes">Footnotes</a></li>
+        </ul>
+      
+        <div class="tab-content">
+          <div class="tab-pane" id="office_hours">
+            <textarea class="span6" style="height:250px">{{ office_hours }}</textarea>
+          </div>
+        
+          <div class="tab-pane" id="textbook_information">
+            <textarea class="span6" style="height:250px">{{ textbook_information }}</textarea>
+          </div>
+        
+          <div class="tab-pane" id="footnotes">
+            <textarea class="span6" style="height:250px">{{ footnotes }}</textarea>
+          </div>
+        </div>
+        
       </div>
   
       <div class="tab-pane" id="assignments">
         
-        <div class="well" style="border:2px solid #FFF; isplay:none">
+        <div class="well" style="border:2px solid #FFF;">
           <p class="form-inline">
             <label>Name</label>
             <br>
@@ -86,40 +117,17 @@
         
         <div id="assignments-wrapper">
           <table class="table table-striped">
-            <thead style="display:none">
+            <tbody id="js_assignments_view">
               <tr>
-                <th>New</th>
+                <td>{{name}}</td>
+                <td>{{type}}</td>
+                <td style="text-align:right">{{duedate}}</td>
               </tr>
-            </thead>
-            <tbody>
-
-            <% 20.times do %>
-              <tr>
-                <td>read intro to math</td>
-                <td>reading</td>
-                <td style="text-align:right">18 July, 2012</td>
-              </tr>
-            <% end %>
             </tbody>
           </table>
         </div>
       </div>
 
-      <div class="tab-pane" id="extra">
-        <h3>Course Meta-data</h3>
-        <label>Meeting Schedule</label>
-        <input type="text" class="span3" placeholder="(Date Picker)">
-    
-        <label>Office Hours</label>
-        <textarea class="span6"></textarea>
-    
-        <label>Textbook Information</label>
-        <textarea class="span6"></textarea>
-    
-        <label>Footnotes</label>
-        <textarea class="span6"></textarea>
-      </div>
-      
     </form>
   </div>
   

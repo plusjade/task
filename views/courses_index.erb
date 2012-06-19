@@ -2,21 +2,19 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Type</th>
-      <th>Date</th>
+      <th>University</th>
+      <th>Date Uploaded</th>
       <th>Phase</th>
       <th>Status</th>
     </tr>
   </thead>
-  <tbody>
-    <% 20.times do %>
+  <tbody id="js_courses_view">
       <tr>
-        <td><a href="/courses/1">read intro to math</a></td>
-        <td>reading</td>
-        <td>18 July, 2012</td>
-        <td>first-pass</td>
-        <td>new</td>
+        <td><a href="/courses/{{id}}">{{ name }}</a></td>
+        <td>{{ university }}</td>
+        <td>{{ date_uploaded }}</td>
+        <td>{{ phase }}</td>
+        <td>{{ status }}</td>
       </tr>
-    <% end %>
   </tbody>
 </table>

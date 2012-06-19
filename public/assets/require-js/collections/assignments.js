@@ -7,14 +7,8 @@ define([
   'models/assignment'
 ], function($, _, Backbone, Log, Handlebars, Assignment){
   
-  // Partial Colletion
   return Backbone.Collection.extend({
-    model : Assignment,
-    
-    url : function(){
-      return '/courses/1/assignments'
-    }
-    
+    model : Assignment
   });
 
 });

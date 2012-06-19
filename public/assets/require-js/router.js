@@ -2,14 +2,28 @@ define([
   'jquery',
   'underscore',
   'backbone',
-], function($, _, Backbone){
+  
+  'models/course',
+  'models/assignment',
+
+  'collections/courses',
+  'collections/assignments',
+
+  'views/course_view',
+  'views/courses_view',
+  'views/assignment_view',
+  'views/assignments_view',
+
+], function($, _, Backbone,
+  Course, Assignment, Courses, Assignments, 
+  CourseView, CoursesView, AssignmentView, AssignmentsView){
 
   return Backbone.Router.extend({
 
     routes: {
       "" : "home",
-      "index.html" : "home",
-      "*page": "page"
+      "courses/:id": "course",
+      "courses" : "courses",
     },
 
     // Route.navigate() events trigger these route bindings which 
@@ -20,13 +34,24 @@ define([
       var that = this;
       
       this.bind("route:home", function(){
-        this.preview.page.clear({silent : true})
-        this.preview.page.set('path', '_pages/index.md')
+        console.log("home page")
       }, this)
       
-      this.bind("route:page", function(page){
-        this.preview.page.clear({silent : true})
-        this.preview.page.set( 'path', (page.split('?path=')[1] || page) );
+      this.bind("route:courses", function(){
+        console.log('courses page');
+        var courses = new Courses();
+        var courses_view = new CoursesView({ collection: courses });
+        courses.fetch()
+      }, this)
+
+      // All courses must have an existing guid since they reference
+      // uploaded syllabus documents.
+      // In other words there is no /courses/new.
+      this.bind("route:course", function(id){
+        console.log('course page:' + id);
+        var course = new Course({id : id});
+        course.fetch();
+        var course_view = new CourseView({ model: course })
       }, this)
     },
     
@@ -34,8 +59,7 @@ define([
     // Returns: Nothing
     start : function(){
       Backbone.history.start({
-        pushState: true, 
-        root: (this.preview.config.get('basePath') || '/')
+        pushState: true,
       });
     }
 
